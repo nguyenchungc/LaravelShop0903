@@ -15,3 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('home',"HomeController@getHome")->name('getHome');
+Route::get('detail',"HomeController@getDetail")->name('getDetail');
+Route::get('ContactUs',"HomeController@getContactUs")->name('getContactUs');
+Route::get('AboutUs',"HomeController@getAbouttUs")->name('getAbouttUs');
+Route::get('blog',"HomeController@getBlog")->name('getBlog');
+Route::get('checkout',"HomeController@getCheckout")->name('getCheckout');
+Route::get('account',"HomeController@getAccount")->name('getAccount');
+Route::get('single_product',"HomeController@getSingleProduct")->name('singleProduct');
