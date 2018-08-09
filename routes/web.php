@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('home',"HomeController@getHome")->name('getHome');
+Route::get('home',"HomeController@featuredProduct")->name('getHome');
 Route::get('detail',"HomeController@getDetail")->name('getDetail');
 Route::get('ContactUs',"HomeController@getContactUs")->name('getContactUs');
 Route::get('AboutUs',"HomeController@getAbouttUs")->name('getAbouttUs');

@@ -82,8 +82,8 @@
     </div>
   </div>
 
-  <!-- main container -->
-  <div class="main-container col1-layout">
+ <!-- main container -->
+ <div class="main-container col1-layout">
     <div class="container">
       <div class="row">
 
@@ -92,11 +92,11 @@
           <div class="home-tab">
             <ul class="nav home-nav-tabs home-product-tabs">
               <li class="active">
-                <a href="#featured" data-toggle="tab" aria-expanded="false">Featured products</a>
+                <a href="#featured" data-toggle="tab" aria-expanded="false">Sản phẩm đặt biệt</a>
               </li>
               <li class="divider"></li>
               <li>
-                <a href="#top-sellers" data-toggle="tab" aria-expanded="false">Top Sellers</a>
+                <a href="#top-sellers" data-toggle="tab" aria-expanded="false">Các sản phẩm đang giảm giá</a>
               </li>
             </ul>
             <div id="productTabContent" class="tab-content">
@@ -105,16 +105,17 @@
                   <div class="slider-items-products">
                     <div id="featured-slider" class="product-flexslider hidden-buttons">
                       <div class="slider-items slider-width-col4">
+                        @foreach($feature as $fea)
                         <div class="product-item">
                           <div class="item-inner">
                             <div class="product-thumbnail">
                               <div class="icon-sale-label sale-left">Sale</div>
                               <div class="icon-new-label new-right">New</div>
                               <div class="pr-img-area">
-                                <a title="Ipsums Dolors Untra" href="{{Route('singleProduct')}}">
+                                <a title="Ipsums Dolors Untra" href="single_product.html">
                                   <figure>
-                                    <img class="first-img" src="source/images/products/img01.jpg" alt="html template">
-                                    <img class="hover-img" src="source/images/products/img01.jpg" alt="html template">
+                                  <img class="first-img" src="source/images/{{$fea->image}}" alt="html template">
+                                    <img class="hover-img" src="source/images/{{$fea->image}}" alt="html template">
                                   </figure>
                                 </a>
                                 <button type="button" class="add-to-cart-mt">
@@ -126,14 +127,29 @@
                             <div class="item-info">
                               <div class="info-inner">
                                 <div class="item-title">
-                                  <a title="Ipsums Dolors Untra" href="{{route('singleProduct')}}">Ipsums Dolors Untra </a>
+                                <a title="Ipsums Dolors Untra" href="{{route('singleProduct')}}">{{$fea->name}} </a>
                                 </div>
                                 <div class="item-content">
                                   <div class="item-price">
                                     <div class="price-box">
-                                      <span class="regular-price">
-                                        <span class="price">$125.00</span>
-                                      </span>
+                                      @if($fea->promotion_price == 0)
+
+                                          <p class="special-price">
+                                            <span class="price-label">Regular Price:</span>
+                                            <span class="price">{{number_format($fea->price)}} </span>
+                                          </p>
+                                      @else
+                                        <p class="special-price">
+                                            <span class="price-label">Special Price</span>
+                                            <span class="price">{{number_format($fea->promotion_price)}} </span>
+                                          </p>
+                                          <p class="old-price">
+                                            <span class="price-label">Regular Price:</span>
+                                            <span class="price">{{number_format($fea->price)}} </span>
+                                          </p>
+                                      
+                                        
+                                      @endif
                                     </div>
                                   </div>
                                 </div>
@@ -142,7 +158,7 @@
                           </div>
                         </div>
                         
-                       
+                        @endforeach
                       </div>
                     </div>
                   </div>
@@ -153,16 +169,17 @@
                   <div class="slider-items-products">
                     <div id="top-sellers-slider" class="product-flexslider hidden-buttons">
                       <div class="slider-items slider-width-col4 ">
+                        @foreach($topSeller as $top)
                         <div class="product-item">
                           <div class="item-inner">
                             <div class="product-thumbnail">
                               <div class="icon-sale-label sale-left">Sale</div>
                               <div class="icon-new-label new-right">New</div>
                               <div class="pr-img-area">
-                                <a title="Ipsums Dolors Untra" href="{{Route('singleProduct')}}">
+                                <a title="Ipsums Dolors Untra" href="single_product.html">
                                   <figure>
-                                    <img class="first-img" src="source/images/products/img03.jpg" alt="html template">
-                                    <img class="hover-img" src="source/images/products/img03.jpg" alt="html template">
+                                    <img class="first-img" src="source/images/{{$top->image}}" alt="html template">
+                                    <img class="hover-img" src="source/images/{{$top->image}}" alt="html template">
                                   </figure>
                                 </a>
                                 <button type="button" class="add-to-cart-mt">
@@ -175,15 +192,30 @@
                             <div class="item-info">
                               <div class="info-inner">
                                 <div class="item-title">
-                                <a title="Ipsums Dolors Untra" href="{{Route('singleProduct')}}">Ipsums Dolors Untra </a>
+                                  <a title="Ipsums Dolors Untra" href="single_product.html">{{$top->name}}</a>
                                 </div>
                                 <div class="item-content">
 
                                   <div class="item-price">
                                     <div class="price-box">
-                                      <span class="regular-price">
-                                        <span class="price">$125.00</span>
-                                      </span>
+                                        @if($top->promotion_price == 0)
+
+                                        <p class="special-price">
+                                          <span class="price-label">Regular Price:</span>
+                                          <span class="price">{{number_format($top->price)}} </span>
+                                        </p>
+                                    @else
+                                      <p class="special-price">
+                                          <span class="price-label">Special Price</span>
+                                          <span class="price">{{number_format($top->promotion_price)}} </span>
+                                        </p>
+                                        <p class="old-price">
+                                          <span class="price-label">Regular Price:</span>
+                                          <span class="price">{{number_format($top->price)}} </span>
+                                        </p>
+                                    
+                                      
+                                    @endif
                                     </div>
                                   </div>
                                 </div>
@@ -191,7 +223,7 @@
                             </div>
                           </div>
                         </div>
-                     
+                        @endforeach
                       </div>
                     </div>
                   </div>
@@ -211,12 +243,13 @@
   <div class="container">
     <div class="special-products">
       <div class="page-header">
-        <h2>special products</h2>
+        <h2>Các sản phẩm mới</h2>
       </div>
       <div class="special-products-pro">
         <div class="slider-items-products">
           <div id="special-products-slider" class="product-flexslider hidden-buttons">
             <div class="slider-items slider-width-col4">
+              @foreach($newProduct as $new)
               <div class="product-item">
                 <div class="item-inner">
                   <div class="product-thumbnail">
@@ -225,8 +258,8 @@
                     <div class="pr-img-area">
                       <a title="Ipsums Dolors Untra" href="{{Route('singleProduct')}}">
                         <figure>
-                          <img class="first-img" src="source/images/products/img08.jpg" alt="html template">
-                          <img class="hover-img" src="source/images/products/img08.jpg" alt="html template">
+                          <img class="first-img" src="source/images/{{$new->image}}" alt="html template">
+                          <img class="hover-img" src="source/images/{{$new->image}}" alt="html template">
                         </figure>
                       </a>
                       <button type="button" class="add-to-cart-mt">
@@ -239,15 +272,30 @@
                   <div class="item-info">
                     <div class="info-inner">
                       <div class="item-title">
-                      <a title="Ipsums Dolors Untra" href="{{Route('singleProduct')}}">Ipsums Dolors Untra </a>
+                      <a title="Ipsums Dolors Untra" href="{{Route('singleProduct')}}">{{$new->name}} </a>
                       </div>
                       <div class="item-content">
 
                         <div class="item-price">
                           <div class="price-box">
-                            <span class="regular-price">
-                              <span class="price">$125.00</span>
-                            </span>
+                              @if($new->promotion_price == 0)
+
+                              <p class="special-price">
+                                <span class="price-label">Regular Price:</span>
+                                <span class="price">{{number_format($new->price)}} </span>
+                              </p>
+                          @else
+                            <p class="special-price">
+                                <span class="price-label">Special Price</span>
+                                <span class="price">{{number_format($new->promotion_price)}} </span>
+                              </p>
+                              <p class="old-price">
+                                <span class="price-label">Regular Price:</span>
+                                <span class="price">{{number_format($new->price)}} </span>
+                              </p>
+                          
+                            
+                          @endif
                           </div>
                         </div>
                       </div>
@@ -255,7 +303,7 @@
                   </div>
                 </div>
               </div>
-              
+              @endforeach
             </div>
           </div>
         </div>
@@ -267,54 +315,39 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-sm-6">
+         
           <div class="jtv-single-cat">
-            <h2 class="cat-title">Best Seller</h2>
+            <h2 class="cat-title">Các sản phẩm đang bán</h2>
+            @foreach($oldProduct as $old)
             <div class="jtv-product">
               <div class="product-img">
                 <a href="single_product.html">
-                  <img src="source/images/products/img10.jpg" alt="html template">
-                  <img class="secondary-img" src="source/images/products/img10.jpg" alt="html template"> </a>
+                  <img src="source/images/{{$old->image}}" alt="html template">
+                  <img class="secondary-img" src="source/images/{{$old->image}}" alt="html template"> </a>
               </div>
               <div class="jtv-product-content">
                 <h3>
-                  <a href="single_product.html">Lorem ipsum dolor sit amet</a>
+                  <a href="single_product.html">{{$old->name}}</a>
                 </h3>
                 <div class="price-box">
-                  <span class="regular-price">
-                    <span class="price">$125.00</span>
-                  </span>
-                </div>
-                <div class="jtv-product-action">
-                  <div class="jtv-extra-link">
-                    <div class="button-cart">
-                      <button>
-                        <i class="fa fa-shopping-cart"></i>
-                      </button>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="jtv-product jtv-cat-margin">
-              <div class="product-img">
-                <a href="single_product.html">
-                  <img src="source/images/products/img07.jpg" alt="html template">
-                  <img class="secondary-img" src="source/images/products/img08.jpg" alt="html template"> </a>
-              </div>
-              <div class="jtv-product-content">
-                <h3>
-                  <a href="single_product.html">Lorem ipsum dolor sit amet</a>
-                </h3>
-                <div class="price-box">
+                    @if($old->promotion_price == 0)
+
+                    <p class="special-price">
+                      <span class="price-label">Regular Price:</span>
+                      <span class="price">{{number_format($old->price)}} </span>
+                    </p>
+                @else
                   <p class="special-price">
-                    <span class="price-label">Special Price</span>
-                    <span class="price"> $456.00 </span>
-                  </p>
-                  <p class="old-price">
-                    <span class="price-label">Regular Price:</span>
-                    <span class="price"> $567.00 </span>
-                  </p>
+                      <span class="price-label">Special Price</span>
+                      <span class="price">{{number_format($old->promotion_price)}} </span>
+                    </p>
+                    <p class="old-price">
+                      <span class="price-label">Regular Price:</span>
+                      <span class="price">{{number_format($old->price)}} </span>
+                    </p>
+                
+                  
+                @endif
                 </div>
                 <div class="jtv-product-action">
                   <div class="jtv-extra-link">
@@ -328,57 +361,43 @@
                 </div>
               </div>
             </div>
-            <div class="jtv-product jtv-cat-margin">
-              <div class="product-img">
-                <a href="single_product.html">
-                  <img src="source/images/products/img08.jpg" alt="html template">
-                  <img class="secondary-img" src="source/images/products/img09.jpg" alt="html template"> </a>
-              </div>
-              <div class="jtv-product-content">
-                <h3>
-                  <a href="single_product.html">Lorem ipsum dolor sit amet</a>
-                </h3>
-                <div class="price-box">
-                  <span class="regular-price">
-                    <span class="price">$225.00</span>
-                  </span>
-                </div>
-                <div class="jtv-product-action">
-                  <div class="jtv-extra-link">
-                    <div class="button-cart">
-                      <button>
-                        <i class="fa fa-shopping-cart"></i>
-                      </button>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
+          
         </div>
         <div class="col-md-4 col-sm-6">
           <div class="jtv-single-cat">
-            <h2 class="cat-title">ON SALE</h2>
+            <h2 class="cat-title">Sản phẩm phổ thông</h2>
+            @foreach($normalProduct as $normal)
             <div class="jtv-product">
               <div class="product-img">
                 <a href="single_product.html">
-                  <img src="source/images/products/img12.jpg" alt="html template">
-                  <img class="secondary-img" src="source/images/products/img11.jpg" alt="html template"> </a>
+                  <img src="source/images/{{$normal->image}}" alt="html template">
+                  <img class="secondary-img" src="source/images/{{$normal->image}}" alt="html template"> </a>
               </div>
               <div class="jtv-product-content">
                 <h3>
-                  <a href="single_product.html">Lorem ipsum dolor sit amet</a>
+                  <a href="single_product.html">{{$normal->name}}</a>
                 </h3>
                 <div class="price-box">
+                    @if($normal->promotion_price == 0)
+
+                    <p class="special-price">
+                      <span class="price-label">Regular Price:</span>
+                      <span class="price">{{number_format($normal->price)}} </span>
+                    </p>
+                @else
                   <p class="special-price">
-                    <span class="price-label">Special Price</span>
-                    <span class="price"> $99.00 </span>
-                  </p>
-                  <p class="old-price">
-                    <span class="price-label">Regular Price:</span>
-                    <span class="price"> $119.00 </span>
-                  </p>
+                      <span class="price-label">Special Price</span>
+                      <span class="price">{{number_format($normal->promotion_price)}} </span>
+                    </p>
+                    <p class="old-price">
+                      <span class="price-label">Regular Price:</span>
+                      <span class="price">{{number_format($normal->price)}} </span>
+                    </p>
+                
+                  
+                @endif
                 </div>
                 <div class="jtv-product-action">
                   <div class="jtv-extra-link">
@@ -392,65 +411,13 @@
                 </div>
               </div>
             </div>
-            <div class="jtv-product jtv-cat-margin">
-              <div class="product-img">
-                <a href="single_product.html">
-                  <img src="source/images/products/img05.jpg" alt="html template">
-                  <img class="secondary-img" src="source/images/products/img10.jpg" alt="html template"> </a>
-              </div>
-              <div class="jtv-product-content">
-                <h3>
-                  <a href="single_product.html">Lorem ipsum dolor sit amet</a>
-                </h3>
-                <div class="price-box">
-                  <span class="regular-price">
-                    <span class="price">$189.00</span>
-                  </span>
-                </div>
-                <div class="jtv-product-action">
-                  <div class="jtv-extra-link">
-                    <div class="button-cart">
-                      <button>
-                        <i class="fa fa-shopping-cart"></i>
-                      </button>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="jtv-product jtv-cat-margin">
-              <div class="product-img">
-                <a href="single_product.html">
-                  <img src="source/images/products/img01.jpg" alt="html template">
-                  <img class="secondary-img" src="source/images/products/img03.jpg" alt="html template"> </a>
-              </div>
-              <div class="jtv-product-content">
-                <h3>
-                  <a href="single_product.html">Lorem ipsum dolor sit amet</a>
-                </h3>
-                <div class="price-box">
-                  <span class="regular-price">
-                    <span class="price">$88.99</span>
-                  </span>
-                </div>
-                <div class="jtv-product-action">
-                  <div class="jtv-extra-link">
-                    <div class="button-cart">
-                      <button>
-                        <i class="fa fa-shopping-cart"></i>
-                      </button>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
+           @endforeach
+            
           </div>
         </div>
 
         <!-- service area start -->
-        <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="jtv-service-area">
 
             <!-- jtv-single-service start -->

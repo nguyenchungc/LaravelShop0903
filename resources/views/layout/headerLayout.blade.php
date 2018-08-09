@@ -194,6 +194,7 @@
                 <div class="mega-menu-category">
                   <ul class="nav">
                     <li>
+                      
                     <a href="{{route('getDetail')}}">
                         <i class="icon fa fa-camera fa-fw"></i> Camera & Photo</a>
                       <div class="wrap-popup column1">
@@ -212,6 +213,7 @@
                           </div>
                         </div>
                       </div>
+                      
                     </li>
                   
                   </ul>
