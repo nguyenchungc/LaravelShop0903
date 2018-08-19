@@ -129,9 +129,9 @@
                     <div class="input-group">
                       <select class="cate-dropdown hidden-xs" name="category_id">
                         <option>All Categories</option>
-                        <option>women</option>
-                        <option>Men</option>
-                        <option>Electronics</option>
+                        @foreach($levelOne as $LV1)
+                        <option>{{$LV1->name}}</option>
+                        @endforeach
                       </select>
                       <input type="text" class="form-control" placeholder="Search" name="search">
                       <button class="btn-search" type="button">
@@ -193,21 +193,23 @@
                 </div>
                 <div class="mega-menu-category">
                   <ul class="nav">
+                    @foreach($levelOne as $LV1)
                     <li>
                       
-                    <a href="{{route('getDetail')}}">
-                        <i class="icon fa fa-camera fa-fw"></i> Camera & Photo</a>
+                      <a href="{{route('getDetail')}}">
+                      <i class="icon fa {{$LV1->icon}} fa-fw"></i>{{$LV1->name}}</a>
                       <div class="wrap-popup column1">
                         <div class="popup">
                           <div class="row">
                             <div class="col-md-12">
                               <ul class="nav">
+                                {{-- @foreach($levelTwo as $LV2)
                                 <li>
                                   <a href="{{route('getDetail')}}">
-                                    <span>Canon</span>
+                                    <span>{{$LV2->name}}</span>
                                   </a>
                                 </li>
-                               
+                               @endforeach --}}
                               </ul>
                             </div>
                           </div>
@@ -215,7 +217,7 @@
                       </div>
                       
                     </li>
-                  
+                    @endforeach
                   </ul>
                 </div>
               </div>

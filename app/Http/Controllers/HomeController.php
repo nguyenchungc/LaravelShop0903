@@ -54,7 +54,13 @@ class HomeController extends Controller
         $topSeller = products::where('promotion_price','!=',0)->get();
         $newProduct = products::where('new','=',1)->get();
         $oldProduct = products::where('new','=',0)->paginate(3);
-        return view('pages.home',compact('feature','topSeller','newProduct','oldProduct','normalProduct'));
+        $levelOne = Categories::where('id_parent',NULL)->get();
+        //$levelTwo = Categories::where('id_parent',)->get();
+        return view('pages.home',compact('feature','topSeller','newProduct','oldProduct','normalProduct','levelOne','levelTwo'));
     }
+    
+        
+        
+    
     
 }
