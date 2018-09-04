@@ -39,7 +39,7 @@ class HomeController extends Controller
             echo "nolevel2";
         }
         else{
-            return view('ajax.leveltwo',compact('levelTwo'));
+            return view('ajax.levelTwo',compact('levelTwo'));
         }
     }
     function getlistProduct($idType){
@@ -54,10 +54,15 @@ class HomeController extends Controller
         $topSeller = products::where('promotion_price','!=',0)->get();
         $newProduct = products::where('new','=',1)->get();
         $oldProduct = products::where('new','=',0)->paginate(3);
-        $levelOne = Categories::where('id_parent',NULL)->get();
-        //$levelTwo = Categories::where('id_parent',)->get();
-        return view('pages.home',compact('feature','topSeller','newProduct','oldProduct','normalProduct','levelOne','levelTwo'));
+        $levelOne = Categories::where('id_parent', NULL)->get();
+        // $levelTwo = Categories::where('id_parent',)->get();
+        return view('pages.home',compact('feature','topSeller','newProduct','oldProduct','normalProduct','levelOne'));
     }
+    function levelOne(){
+        $levelOne = Categories::where('id_parent',NULL)->get();
+        return view('listproduct',compact('levelOne'));
+    }
+
     
         
         

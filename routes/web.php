@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 Route::get('home',"HomeController@featuredProduct")->name('getHome');
 Route::get('detail',"HomeController@getDetail")->name('getDetail');
-Route::get('list-product-{idType}',"AdminController@getlistProduct")->name('getlistProduct');
+Route::get('list-product-{idType}',"HomeController@getlistProduct")->name('getlistProduct');
 Route::get('ContactUs',"HomeController@getContactUs")->name('getContactUs');
 Route::get('AboutUs',"HomeController@getAbouttUs")->name('getAbouttUs');
 Route::get('blog',"HomeController@getBlog")->name('getBlog');

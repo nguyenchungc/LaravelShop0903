@@ -129,9 +129,9 @@
                     <div class="input-group">
                       <select class="cate-dropdown hidden-xs" name="category_id">
                         <option>All Categories</option>
-                        @foreach($levelOne as $LV1)
+                        {{-- @foreach($levelOne as $LV1)
                         <option>{{$LV1->name}}</option>
-                        @endforeach
+                        @endforeach --}}
                       </select>
                       <input type="text" class="form-control" placeholder="Search" name="search">
                       <button class="btn-search" type="button">
@@ -193,23 +193,21 @@
                 </div>
                 <div class="mega-menu-category">
                   <ul class="nav">
-                    @foreach($levelOne as $LV1)
+                    @foreach($menu as $m)
+                    @if(count($m->levelTwo)==0)
+                  <li><a href="{{route('getlistProduct',$m->id)}}">{{$m->name}}</a></li>
+                    @else
                     <li>
-                      
-                      <a href="{{route('getDetail')}}">
-                      <i class="icon fa {{$LV1->icon}} fa-fw"></i>{{$LV1->name}}</a>
+                      <a href="{{route('getlistProduct',$m->id)}}">
+                      <i class="icon fa {{$m->icon}} fa-fw"></i>{{$m->name}}</a>
                       <div class="wrap-popup column1">
                         <div class="popup">
                           <div class="row">
                             <div class="col-md-12">
                               <ul class="nav">
-                                {{-- @foreach($levelTwo as $LV2)
-                                <li>
-                                  <a href="{{route('getDetail')}}">
-                                    <span>{{$LV2->name}}</span>
-                                  </a>
-                                </li>
-                               @endforeach --}}
+                                @foreach($m->levelTwo as $l2)
+                                <li><a href="{{route('getlistProduct',$m->id)}}">{{$l2->name}}</a></li>
+                               @endforeach
                               </ul>
                             </div>
                           </div>
@@ -217,6 +215,7 @@
                       </div>
                       
                     </li>
+                    @endif
                     @endforeach
                   </ul>
                 </div>
