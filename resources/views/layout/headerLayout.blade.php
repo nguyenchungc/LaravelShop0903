@@ -207,7 +207,7 @@
                               <ul class="nav">
                                 @foreach($m->levelTwo as $l2)
                                 <li><a href="{{route('getlistProduct',$m->id)}}">{{$l2->name}}</a></li>
-                               @endforeach
+                                @endforeach
                               </ul>
                             </div>
                           </div>

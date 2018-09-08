@@ -14,7 +14,7 @@
                 <!-- Item -->
                 <div class="item">
                   <a href="#x">
-                    <img alt="" src="images/cat-slider-img1.jpg">
+                    <img alt="" src="source/images/cat-slider-img1.jpg">
                   </a>
                   <div class="inner-info">
                     <div class="cat-img-title">
@@ -32,7 +32,7 @@
                 <!-- Item -->
                 <div class="item">
                   <a href="#x">
-                    <img alt="" src="images/cat-slider-img2.jpg">
+                    <img alt="" src="source/images/cat-slider-img2.jpg">
                   </a>
                 </div>
 
@@ -44,20 +44,20 @@
         </div>
         <div class="shop-inner">
           <div class="page-title">
-            <h2>Apple</h2>
+            <h2>{{$nameType}}</h2>
           </div>
 
           <div class="product-grid-area">
             <ul class="products-grid">
               @foreach($products as $p)
-              <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6 ">
+              <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6 " style ="height:350px">
                 <div class="product-item">
                   <div class="item-inner">
                     <div class="product-thumbnail">
                       <div class="icon-sale-label sale-left">Sale</div>
                       <div class="icon-new-label new-right">New</div>
                       <div class="pr-img-area">
-                        <a title="Ipsums Dolors Untra" href="single_product.html">
+                        <a title="{{$p->name}}" href="{{route('singleProduct')}}">
                           <figure>
                           <img class="first-img" src="source/images/{{$p->image}}" alt="">
                             <img class="hover-img" src="source/images/{{$p->image}}" alt="">
@@ -73,7 +73,7 @@
                     <div class="item-info">
                       <div class="info-inner">
                         <div class="item-title">
-                          <a title="Ipsums Dolors Untra" href="single_product.html">Ipsums Dolors Untra </a>
+                        <a title="{{$p->id_type}}" href="{{route('singleProduct')}}">{{$p->name}} </a>
                         </div>
                         <div class="item-content">
 
@@ -97,22 +97,9 @@
             </ul>
           </div>
           <div class="pagination-area ">
-            <ul>
-              <li>
-                <a class="active" href="#">1</a>
-              </li>
-              <li>
-                <a href="#">2</a>
-              </li>
-              <li>
-                <a href="#">3</a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-angle-right"></i>
-                </a>
-              </li>
-            </ul>
+            
+              {{$products->links()}}
+            
           </div>
         </div>
       </div>
@@ -121,111 +108,7 @@
           <div class="sidebar-title">
             <h3>Categories</h3>
           </div>
-          <ul class="product-categories">
-            <li class="cat-item current-cat cat-parent">
-              <a href="shop_grid.html">Women</a>
-              <ul class="children">
-                <li class="cat-item cat-parent">
-                  <a href="shop_grid.html">
-                    <i class="fa fa-angle-right"></i>&nbsp; Accessories</a>
-                  <ul class="children">
-                    <li class="cat-item">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; Dresses</a>
-                    </li>
-                    <li class="cat-item cat-parent">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; Handbags</a>
-                      <ul style="display: none;" class="children">
-                        <li class="cat-item">
-                          <a href="shop_grid.html">
-                            <i class="fa fa-angle-right"></i>&nbsp; Beaded Handbags</a>
-                        </li>
-                        <li class="cat-item">
-                          <a href="shop_grid.html">
-                            <i class="fa fa-angle-right"></i>&nbsp; Sling bag</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="cat-item cat-parent">
-                  <a href="shop_grid.html">
-                    <i class="fa fa-angle-right"></i>&nbsp; Handbags</a>
-                  <ul class="children">
-                    <li class="cat-item">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; backpack</a>
-                    </li>
-                    <li class="cat-item">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; Beaded Handbags</a>
-                    </li>
-                    <li class="cat-item">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; Fabric Handbags</a>
-                    </li>
-                    <li class="cat-item">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; Sling bag</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="cat-item">
-                  <a href="shop_grid.html">
-                    <i class="fa fa-angle-right"></i>&nbsp; Jewellery</a>
-                </li>
-                <li class="cat-item">
-                  <a href="shop_grid.html">
-                    <i class="fa fa-angle-right"></i>&nbsp; Swimwear</a>
-                </li>
-              </ul>
-            </li>
-            <li class="cat-item cat-parent">
-              <a href="shop_grid.html">Men</a>
-              <ul class="children">
-                <li class="cat-item cat-parent">
-                  <a href="shop_grid.html">
-                    <i class="fa fa-angle-right"></i>&nbsp; Dresses</a>
-                  <ul class="children">
-                    <li class="cat-item">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; Casual</a>
-                    </li>
-                    <li class="cat-item">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; Designer</a>
-                    </li>
-                    <li class="cat-item">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; Evening</a>
-                    </li>
-                    <li class="cat-item">
-                      <a href="shop_grid.html">
-                        <i class="fa fa-angle-right"></i>&nbsp; Hoodies</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="cat-item">
-                  <a href="shop_grid.html">
-                    <i class="fa fa-angle-right"></i>&nbsp; Jackets</a>
-                </li>
-                <li class="cat-item">
-                  <a href="shop_grid.html">
-                    <i class="fa fa-angle-right"></i>&nbsp; Shoes</a>
-                </li>
-              </ul>
-            </li>
-            <li class="cat-item">
-              <a href="shop_grid.html">Electronics</a>
-            </li>
-            <li class="cat-item">
-              <a href="shop_grid.html">Furniture</a>
-            </li>
-            <li class="cat-item">
-              <a href="shop_grid.html">KItchen</a>
-            </li>
-          </ul>
+          
         </div>
         <div class="block shop-by-side">
           <div class="sidebar-bar-title">
@@ -337,7 +220,7 @@
             <ul>
               <li class="item">
                 <a href="shopping_cart.html" title="Sample Product" class="product-image">
-                  <img src="images/products/img07.jpg" alt="Sample Product ">
+                  <img src="source/images/products/img07.jpg" alt="Sample Product ">
                 </a>
                 <div class="product-details">
                   <div class="access">
@@ -354,7 +237,7 @@
               </li>
               <li class="item last">
                 <a href="#" title="Sample Product" class="product-image">
-                  <img src="images/products/img08.jpg" alt="Sample Product">
+                  <img src="source/images/products/img08.jpg" alt="Sample Product">
                 </a>
                 <div class="product-details">
                   <div class="access">
@@ -399,7 +282,7 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
               <div class="item active">
-                <img src="images/add-slide1.jpg" alt="slide1">
+                <img src="source/images/add-slide1.jpg" alt="slide1">
                 <div class="carousel-caption">
                   <h3>
                     <a href="single_product.html" title=" Sample Product">Sale Up to 50% off</a>
@@ -409,7 +292,7 @@
                 </div>
               </div>
               <div class="item">
-                <img src="images/add-slide2.jpg" alt="slide2">
+                <img src="source/images/add-slide2.jpg" alt="slide2">
                 <div class="carousel-caption">
                   <h3>
                     <a href="single_product.html" title=" Sample Product">Smartwatch Collection</a>
@@ -419,7 +302,7 @@
                 </div>
               </div>
               <div class="item">
-                <img src="images/add-slide3.jpg" alt="slide3">
+                <img src="source/images/add-slide3.jpg" alt="slide3">
                 <div class="carousel-caption">
                   <h3>
                     <a href="single_product.html" title=" Sample Product">Summer Sale</a>
@@ -449,7 +332,7 @@
               <li class="item">
                 <div class="products-block-left">
                   <a href="single_product.html" title="Sample Product" class="product-image">
-                    <img src="images/products/img01.jpg" alt="Sample Product ">
+                    <img src="source/images/products/img01.jpg" alt="Sample Product ">
                   </a>
                 </div>
                 <div class="products-block-right">
@@ -469,7 +352,7 @@
               <li class="item">
                 <div class="products-block-left">
                   <a href="single_product.html" title="Sample Product" class="product-image">
-                    <img src="images/products/img02.jpg" alt="Sample Product ">
+                    <img src="source/images/products/img02.jpg" alt="Sample Product ">
                   </a>
                 </div>
                 <div class="products-block-right">
